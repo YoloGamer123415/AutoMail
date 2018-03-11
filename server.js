@@ -1,37 +1,56 @@
-var express = require('express');
-var http = require('http');
-var io = require('socket.io');
- 
- 
-var app = express();
-app.use(express.static('./server'));
-//Specifying the public folder of the server to make the html accesible using the static middleware
- 
-var server =http.createServer(app).listen(8124);
-//Server listens on the port 8124
-io = io.listen(server); 
-/*initializing the websockets communication , server instance has to be sent as the argument */
- 
-io.sockets.on("connection",function(socket){
-    /*Associating the callback function to be executed when client visits the page and websocket connection is made */
-      
-      var message_to_client = {
-        data:"Connection with the server established"
-      }
-      socket.send(JSON.stringify(message_to_client)); 
-      /*sending data to the client , this triggers a message event at the client side */
-    console.log('Socket.io Connection with the client established');
-    socket.on("message",function(data){
-        /*This event is triggered at the server side when client sends the data using socket.send() method */
-        data = JSON.parse(data);
- 
-        console.log(data);
-        /*Printing the data */
-        var ack_to_client = {
-        data:"Server Received the message"
-      }
-      socket.send(JSON.stringify(ack_to_client));
-        /*Sending the Acknowledgement back to the client , this will trigger "message" event on the clients side*/
-    });
- 
+/* 
+  Dit bestand moet je natuurlijk niet publiek beschikbaar maken want dan weet iedereen je ww lol
+*/
+
+const express = require("express");
+const app = express();
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
+const nodemailer = require("nodemailer");
+
+app.use(express.static("./public"));
+
+io.on("connection", function(socket) {
+  console.log("Client connected!");
+
+  socket.on("disconnect", function() {
+    console.log("Client disconnected!");
+  })
+
+  socket.on("sendMail", sendMail); //of function(){sendMail} maar dit is cleaner
 });
+
+http.listen(8080, function () {
+  console.log("listening on *:8080");
+});
+
+function sendMail(data) {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "automatic.bot.001@gmail.com",
+      pass: "KrijgJeNiet"
+    }
+  });
+
+  const to = data.to
+  const subject = data.subject
+  const text = data.text
+
+  const mailOptions = {
+    from: "automatic.bot.001@gmail.com",
+    to: to,
+    subject: subject,
+    html: text + `<br /><center><h6>This mail has been sent automatically. Replaying to this mail doesn't work.</h6> <a href='https://molmassa.000webhostapp.com'>Our website</a></center>`
+  };
+
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+}
+

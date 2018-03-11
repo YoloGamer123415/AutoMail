@@ -1,0 +1,15 @@
+{
+  "name": "AutoMail",
+  "version": "0.1.0",
+  "description": "A test mail application",
+  "main": "server.js",
+  "repository": "https://github.com/YoloGamer123415/AutoMail.git",
+  "author": "idiidk <dviide@protonmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.16.2",
+    "nodemailer": "^4.6.2",
+    "socket.io": "^2.0.4"
+  }
+}
