@@ -25,7 +25,7 @@ function sendMail(data) {
     service: "gmail",
     auth: {
       user: "automatic.bot.001@gmail.com",
-      pass: "AutoBot001Ww"
+      pass: ""
     }
   });
 
