@@ -1,14 +1,10 @@
-/* 
-  Dit bestand moet je natuurlijk niet publiek beschikbaar maken want dan weet iedereen je ww lol
-*/
-
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 const nodemailer = require("nodemailer");
 
-app.use(express.static("./public"));
+app.use(express.static("./website"));
 
 io.on("connection", function(socket) {
   console.log("Client connected!");
@@ -20,8 +16,8 @@ io.on("connection", function(socket) {
   socket.on("sendMail", sendMail); //of function(){sendMail} maar dit is cleaner
 });
 
-http.listen(8080, function () {
-  console.log("listening on *:8080");
+http.listen(8000, function () {
+  console.log("listening on *:8000");
 });
 
 function sendMail(data) {
@@ -29,7 +25,7 @@ function sendMail(data) {
     service: "gmail",
     auth: {
       user: "automatic.bot.001@gmail.com",
-      pass: "KrijgJeNiet"
+      pass: "AutoBot001Ww"
     }
   });
 
@@ -53,4 +49,3 @@ function sendMail(data) {
     }
   });
 }
-
