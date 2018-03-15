@@ -1,5 +1,3 @@
-var io = require("socket.io");
-
 $(function() {
     let socket = io();
     $("#sendMail").click(function() {
