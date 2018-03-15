@@ -1,3 +1,1 @@
 # AutoMail
-
-JORAM IS DIK
