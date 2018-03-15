@@ -1,3 +1,5 @@
+
+
 $(function() {
     let socket = io();
     $("#sendMail").click(function() {
