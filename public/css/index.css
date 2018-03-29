@@ -11,3 +11,40 @@ body {
     text-decoration: none;
     color: black;
 }
+
+.buttonBack:hover {
+    color: rgb(109, 109, 109);
+    transition-delay: 5ms;
+}
+
+.center {
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 400px;
+	height: 30px;
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+input[id="timesToLoop"] {
+    width: 821px !important;
+	height: 30px;
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+textarea[class="text"] {
+    width: 830px !important;
+    height: 200px !important;
+    text-align: left;
+    position: relative;
+    color: black;
+}
