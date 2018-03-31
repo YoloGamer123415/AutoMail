@@ -5,6 +5,12 @@
             "Subject": "Get spammed!",
             "TimesToSend": 1000,
             "Text": "Insert a funny text here."
+        },
+        {
+            "To": "anotherMailAdres@something.com",
+            "Subject": "Get spammed!",
+            "TimesToSend": 1000,
+            "Text": "Insert a funny text here."
         }
     ]
 }
