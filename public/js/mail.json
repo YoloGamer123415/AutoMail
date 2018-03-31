@@ -1,0 +1,10 @@
+{
+    "peopleToSpam": [
+        {
+            "To": "aMailAdres@something.com",
+            "Subject": "Get spammed!",
+            "TimesToSend": 1000,
+            "Text": "Insert a funny text here."
+        }
+    ]
+}
