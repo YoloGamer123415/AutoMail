@@ -13,7 +13,7 @@ io.on("connection", function(socket) {
     console.log("Client disconnected!");
   })
 
-  socket.on("sendMail", sendMail); //of function(){sendMail} maar dit is cleaner
+  socket.on("sendMail", sendMail);
 });
 
 http.listen(80, function () {
@@ -43,6 +43,8 @@ function sendMail(data) {
     html: "<style> .lowerText {color: rgb(0, 0, 0);} .website {color: rgb(0, 0, 0); text-decoration: none;} </style> <div class='mail'> <div class='text'>" + text + "</div> <br /><br /> <center> <h6 class='lowerText'>This mail has been sent automatically. Replaying to this mail doesn't work.</h6> <h6> <a class='website' href='https://molmassa.000webhostapp.com'>Our website</a> </h6> </center> </div>"
   };
 
+  console.log("Sending '" + subject + "' " + timesToSend + " time(s) to '" + to + "'");
+
   var timer = setInterval(function(){
     if(timesSend < timesToSend){
       timesSend++;
@@ -51,13 +53,15 @@ function sendMail(data) {
         if (error) {
           console.log(error);
         } else {
-          console.log("Email '" + subject + "' has been sent " + timesLooped + " time(s) to '" + to + "': " + info.response);
+          console.log("Email '" + subject + "' has been sent " + timesSend + " time(s) to '" + to + "': " + info.response);
         }
       });
+
     } else {
       clearInterval(timer);
       console.log("All mails have been send.")
     }
+    
   }, 2000)
 
 }
