@@ -31,15 +31,15 @@ $(function(){
                 
                 console.log("loop = '" + loop + "'");
                 
-                if(mailTo === "" || mailTo === "joram03@icloud.com"){
+                if(mailTo === "" || mailTo === "yourMailAdress@something.com"){
                     if (mailTo === "") {
                         console.log("The mail could not be send, because there is not specified where to mail to.");
                 
                         $("#error").text("The mail could not be send, because there is not specified where to mail to.");
                     } else {
-                        console.log("The mail could not be send, because 'joram03@icloud.com' is a nice guy and doesn't deserve this.");
+                        console.log("The mail could not be send, because 'yourMailAdress@something.com' is a nice guy and doesn't deserve this.");
                 
-                        $("#error").text("The mail could not be send, because 'joram03@icloud.com' is a nice guy and doesn't deserve this.");
+                        $("#error").text("The mail could not be send, because 'yourMailAdress@something.com' is a nice guy and doesn't deserve this.");
                     }
                 }else{
                     if (mailSubject === "") {
