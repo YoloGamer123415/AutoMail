@@ -1,7 +1,7 @@
 $(function(){
     let socket = io();
 
-    $.get("./mail.json", function(annoyingPeople, error){
+    $.get("./json/mail.json", function(annoyingPeople, error){
         $("#sendMail").click(function(){
 
             function sendMailNow() {
@@ -64,6 +64,8 @@ $(function(){
 
             function sendMailUsingJSON(y){
                 console.log("Sending mails using JSON!");
+
+                $("#error").text("Sending the mail '" + annoyingPeople.peopleToSpam[y].Subject + "' to '" + annoyingPeople.peopleToSpam[y].To + "' " + annoyingPeople.peopleToSpam[y].TimesToSend + " time(s).");
                 
                 socket.emit("sendMail", {
                     to: annoyingPeople.peopleToSpam[y].To,
