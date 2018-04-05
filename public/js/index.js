@@ -1,7 +1,7 @@
 $(function(){
     let socket = io();
 
-    $.get("./json/mail.json", function(annoyingPeople, error){
+    $.get("./mail.json", function(annoyingPeople, error){
         $("#sendMail").click(function(){
 
             function sendMailNow() {
