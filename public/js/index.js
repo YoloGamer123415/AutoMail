@@ -13,10 +13,8 @@ $(function(){
                 })
             }
 
-            function checkMailTo(x){
-                var mailTo = $("#to").val();
-
-                if (isNaN(x) || mailTo === "") {
+            function checkMailTo(x) {
+                if (isNaN(x) || x === "") {
                     console.log("False");
                     sendMailManually();
                 } else {
